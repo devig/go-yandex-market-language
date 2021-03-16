@@ -22,6 +22,7 @@ type Offer struct {
 	Available  bool
 	Vendor     string
 	Model      string
+	VendorCode string
 	URL        string
 	Name       string
 	Picture    []string
@@ -57,6 +58,10 @@ func (o *Offer) LoadFromNode(node *xmlpath.Node) {
 
 	if val, ok := xmlpath.MustCompile("model").String(node); ok {
 		o.Model = val
+	}
+	
+	if val, ok := xmlpath.MustCompile("vendor_code").String(node); ok {
+		o.VendorCode = val
 	}
 
 	if val, ok := xmlpath.MustCompile("url").String(node); ok {
